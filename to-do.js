@@ -1,3 +1,53 @@
+const initTask = (cont)=>{
+    let taskdiv = document.createElement('div'); //.task
+    taskdiv.classList.add("task");
+    let newTask = document.createElement('p'); //.taskcont
+    newTask.classList.add("taskcont");
+    newTask.textContent = cont;
+    let buttonDiv = document.createElement('div'); //.buttons
+    buttonDiv.classList.add("buttons");
+    let check = document.createElement('input'); //.checkbox
+    check.classList.add("checkbox");
+    check.type = 'checkbox';
+    let deleteButton = document.createElement('button'); //.delete
+    deleteButton.classList.add("delete");
+    deleteButton.textContent = "delete";
+    let priorButton = document.createElement('button'); //.prior
+    priorButton.classList.add("prior");
+    priorButton.textContent = "Prior";
+
+    
+    buttonDiv.appendChild(check);
+    buttonDiv.appendChild(deleteButton);
+    buttonDiv.appendChild(priorButton);
+    
+    taskdiv.appendChild(newTask);
+    taskdiv.appendChild(buttonDiv);
+    
+    let parent = document.querySelector('.viewboard');
+    parent.appendChild(taskdiv);
+
+    deleteButton.addEventListener('click', ()=>{
+        parent.removeChild(taskdiv);
+    })
+
+    check.addEventListener('click',()=>{
+        newTask.classList.toggle('done');
+    })
+}
+
+
+let data = JSON.parse(localStorage.getItem("user")) || [];
+
+for(let i=0; i<data.length; i++){
+    initTask(data[i]);
+}
+
+// let cont = "helo";
+
+// initTask(cont);
+
+
 const addTask = ()=>{
     let inputTask = document.querySelector(".addtask").value;
 
@@ -31,13 +81,16 @@ const addTask = ()=>{
 
     deleteButton.addEventListener('click', ()=>{
         parent.removeChild(taskdiv);
+        data.remove();
     })
 
     check.addEventListener('click',()=>{
         newTask.classList.toggle('done');
     })
     
-    
+    data.push(inputTask);
+    localStorage.setItem("user", JSON.stringify(data));
+
 
 }
 
