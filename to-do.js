@@ -45,5 +45,5 @@ const addTask = ()=>{
 let addButton = document.querySelector(".addbutton");
 addButton.addEventListener('click', addTask);
 
-let alCheck = document.querySelector("#checked");
-alCheck.checked = true;
+// let alCheck = document.querySelector("#checked");
+// alCheck.checked = true;
