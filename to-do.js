@@ -58,5 +58,3 @@ for(let i = 0; i<checkboxes.length;i++){
         taskCont.classList.toggle("done");
     });
 }
-
-let tasks = document.querySelectorAll(".task");
