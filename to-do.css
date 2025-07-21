@@ -99,6 +99,11 @@ button{
     /* margin-left: 1rem; */
     z-index: 2;
 }
+
+.done{
+    text-decoration: line-through;
+}
+
 .buttons{
     width: 10rem;
     height: 100%;
