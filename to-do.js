@@ -1,5 +1,3 @@
-// let value = 3;
-
 const addTask = ()=>{
     let inputTask = document.querySelector(".addtask").value;
 
@@ -27,34 +25,25 @@ const addTask = ()=>{
     
     taskdiv.appendChild(newTask);
     taskdiv.appendChild(buttonDiv);
-
-    taskdiv.id = "task";
-    // value++;
     
     let parent = document.querySelector('.viewboard');
     parent.appendChild(taskdiv);
 
-    // let newEl = document.createElement('p');
-    // newEl.textContent = inputTask;
-    // let parent = document.querySelector(".viewboard");
-    // parent.appendChild(newEl);
+    deleteButton.addEventListener('click', ()=>{
+        parent.removeChild(taskdiv);
+    })
 
+    check.addEventListener('click',()=>{
+        newTask.classList.toggle('done');
+    })
+    
+    
 
 }
+
 
 let addButton = document.querySelector(".addbutton");
 addButton.addEventListener('click', addTask);
 
-// let val = 0;
-
 let alCheck = document.querySelector("#checked");
 alCheck.checked = true;
-    
-let checkboxes = document.querySelectorAll(".checkbox");
-for(let i = 0; i<checkboxes.length;i++){
-    checkboxes[i].addEventListener('click',()=>{
-
-        taskCont = checkboxes[i].parentElement.parentElement.querySelector(".taskcont");
-        taskCont.classList.toggle("done");
-    });
-}
