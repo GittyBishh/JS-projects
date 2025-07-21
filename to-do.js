@@ -28,7 +28,7 @@ const addTask = ()=>{
     taskdiv.appendChild(newTask);
     taskdiv.appendChild(buttonDiv);
 
-    taskdiv.id = "task" +value;
+    taskdiv.id = "task";
     // value++;
     
     let parent = document.querySelector('.viewboard');
@@ -58,3 +58,5 @@ for(let i = 0; i<checkboxes.length;i++){
         taskCont.classList.toggle("done");
     });
 }
+
+let tasks = document.querySelectorAll(".task");
