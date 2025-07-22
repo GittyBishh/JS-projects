@@ -25,17 +25,19 @@ button{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-left: 3rem;
+    padding-right: 3rem;
 
     z-index: 0;
 }
 
 .box{
-    width: 45rem;
-    border: 0.4rem solid rgb(61, 208, 51);
+    width: 100%;
+    border: 0.4rem solid rgb(91, 91, 91);
     margin: 1rem;
     border-radius: 1rem;
 
-    box-shadow: 0px 0px 20px rgba(144, 255, 136, 0.487);
+    /* box-shadow: 0px 0px 20px rgba(144, 255, 136, 0.487); */
 }
 
 .head{
@@ -114,7 +116,7 @@ button{
 }
 
 .buttons{
-    width: 10rem;
+    width: 30rem;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -123,18 +125,45 @@ button{
     z-index: 2;
 }
 
-.task::before{
+.midprior::before{
     content:'';
     height: 100%;
     width: 0px;
-    border-right: 0.4rem solid rgb(61, 208, 51);
-    background-color: rgba(38, 121, 32, 0.64);
+    border-right: 0.4rem solid rgb(239, 230, 60);
+    background-color: rgba(121, 115, 32, 0.64);
     position: absolute;
     bottom:0px;
     left: 0px;
     transition: width 0.5s ease-out 0s;
     z-index: 1;
     /* box-shadow: 0.4rem 0px .4rem 0px rgba(144, 255, 136, 0.487); */
+}
+
+.highprior::before{
+
+    content:'';
+    border-right: 0.4rem solid rgb(75, 239, 60);
+    background-color: rgba(32, 121, 41, 0.64);
+    height: 100%;
+    width: 0px;
+    position: absolute;
+    bottom:0px;
+    left: 0px;
+    transition: width 0.5s ease-out 0s;
+    z-index: 1;
+}
+.leastprior::before{
+
+    content:'';
+    border-right: 0.4rem solid rgb(218, 218, 218);
+    background-color: rgba(141, 141, 141, 0.64);
+    height: 100%;
+    width: 0px;
+    position: absolute;
+    bottom:0px;
+    left: 0px;
+    transition: width 0.5s ease-out 0s;
+    z-index: 1;
 }
 
 .task:hover::before{
@@ -150,7 +179,16 @@ button{
     font-size: 18px;
 
 }
-.prior{
+
+.hidebutton{
+    visibility: hidden;
+}
+.prioritize{
+    background-color: transparent;
+    font-size: 18px;
+
+}
+.deprioritize{
     background-color: transparent;
     font-size: 18px;
 
@@ -162,12 +200,17 @@ button{
     background-color: rgb(61, 208, 51);
 } */
 
+
 .delete:hover{
     color: red;
     font-weight: bold;
 }
-.prior:hover{
-    color: yellow;
+.prioritize:hover{
+    color: rgb(0, 255, 0);
+    font-weight: bold;
+}
+.deprioritize:hover{
+    color: red;
     font-weight: bold;
 }
 
