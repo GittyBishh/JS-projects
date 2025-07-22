@@ -1,3 +1,6 @@
+let data = JSON.parse(localStorage.getItem("user")) || [];
+
+
 const initTask = (cont)=>{
     let taskdiv = document.createElement('div'); //.task
     taskdiv.classList.add("task");
@@ -29,6 +32,19 @@ const initTask = (cont)=>{
 
     deleteButton.addEventListener('click', ()=>{
         parent.removeChild(taskdiv);
+
+        let index = 0;
+
+        for(let i = 0; i<data.length;i++){
+            if(data[i] == cont){
+                index = i;
+                break;
+            }
+        }
+
+        data.splice(index,1);
+        localStorage.setItem("user", JSON.stringify(data));
+
     })
 
     check.addEventListener('click',()=>{
@@ -37,7 +53,6 @@ const initTask = (cont)=>{
 }
 
 
-let data = JSON.parse(localStorage.getItem("user")) || [];
 
 for(let i=0; i<data.length; i++){
     initTask(data[i]);
@@ -81,7 +96,17 @@ const addTask = ()=>{
 
     deleteButton.addEventListener('click', ()=>{
         parent.removeChild(taskdiv);
-        data.remove();
+        let index = 0;
+
+        for(let i = 0; i<data.length;i++){
+            if(data[i] == inputTask){
+                index = i;
+                break;
+            }
+        }
+
+        data.splice(index,1);
+        localStorage.setItem("user", JSON.stringify(data));
     })
 
     check.addEventListener('click',()=>{
