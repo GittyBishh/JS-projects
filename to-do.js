@@ -63,33 +63,22 @@ const initTask = (obj)=>{
     deleteButton.addEventListener('click', ()=>{
         parent.removeChild(taskdiv);
 
-        let index = 0;
+        data = data.filter(item=>item.task !== cont);
 
-        for(let i = 0; i<data.length;i++){
-            if(data[i].task == cont){
-                index = i;
-                break;
-            }
-        }
-
-        data.splice(index,1);
+        // data = data.filter(()=);
         localStorage.setItem("user", JSON.stringify(data));
 
     })
 
     check.addEventListener('click',()=>{
         newTask.classList.toggle('done');
-        let index = 0;
 
         for(let i = 0; i<data.length;i++){
             if(data[i].task == cont){
-                index = i;
+                data[i].value = !data[i].value;
                 break;
             }
         }
-
-        data[index].value = !data[index].value;
-
         // data.splice(index,1);
         localStorage.setItem("user", JSON.stringify(data));
     })
@@ -209,32 +198,22 @@ const addTask = ()=>{
 
     deleteButton.addEventListener('click', ()=>{
         parent.removeChild(taskdiv);
-        let index = 0;
 
-        for(let i = 0; i<data.length;i++){
-            if(data[i].task == inputTask){
-                index = i;
-                break;
-            }
-        }
+        data = data.filter(item=>item.task !== inputTask);
 
-        data.splice(index,1);
         localStorage.setItem("user", JSON.stringify(data));
     })
 
     check.addEventListener('click',()=>{
         newTask.classList.toggle('done');
 
-        let index = 0;
-
         for(let i = 0; i<data.length;i++){
             if(data[i].task == inputTask){
-                index = i;
+                data[i].value = !data[i].value;
                 break;
             }
         }
 
-        data[index].value = !data[index].value;
 
         // data.splice(index,1);
         localStorage.setItem("user", JSON.stringify(data));
