@@ -224,8 +224,15 @@ button{
 
 
 @media (max-width: 640px){
+    body{
+        background-color: rgb(45, 45, 45);
+    }
     .container{
-        height: 100%;
+        height: max-content;
+    }
+
+    .viewboard{
+        height: max-content;
     }
 
     .addbutton{
