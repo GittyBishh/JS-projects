@@ -18,7 +18,7 @@ button{
 } */
 
 .container{
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     background-color: rgb(45, 45, 45);
     display: flex;
@@ -100,15 +100,23 @@ button{
     margin-bottom: .5rem;
     display: flex;
     justify-content: space-between;
+    /* display: grid; */
     align-items: center;
     padding:1rem;
     position: relative;
     /* z-index: 2; */
 }
 
-.taskcont{
+.contdiv{
     /* margin-left: 1rem; */
     z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.taskcont{
+    margin-left: 1rem;
 }
 
 .done{
@@ -215,4 +223,68 @@ button{
 }
 
 
+@media (max-width: 640px){
 
+    .addbutton{
+        width: 20%;
+    }
+    .task{
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+
+    }
+    .contdiv{
+        width: 80%;
+        justify-self: start;
+        display: flex;
+        /* justify-content: space-between; */
+    }
+
+    .buttons{
+        width:80%;
+        display: flex;
+        flex-direction: column;
+        /* display: grid;
+        grid-template-rows: 1fr,1fr,1fr; */
+        /* grid-template-columns: repeat(2,1fr); */
+        justify-content: start;
+        align-items: start;
+        margin-top: 2rem;
+        /* padding-left:3.5rem;
+        padding-right:3.5rem; */
+        /* justify-self: start; */
+    }
+
+    .delete{
+        height: 2rem;
+        width:8rem;
+        /* background-color: red; */
+        /* color: black; */
+        margin-bottom: 2rem;
+        border:2px solid rgb(110, 110, 110);
+        border-radius: 1rem;
+    }
+    .prioritize{
+        height: 2rem;
+        width:8rem;
+        /* background-color: red; */
+        /* color: black; */
+        margin-bottom: 2rem;
+        border:2px solid rgb(110, 110, 110);
+        border-radius: 1rem;
+
+    }
+    .deprioritize{
+        height: 2rem;
+        width:8rem;
+        /* background-color: red; */
+        /* color: black; */
+        margin-bottom: 2rem;
+        border:2px solid rgb(110, 110, 110);
+        border-radius: 1rem;
+    }
+    
+
+}

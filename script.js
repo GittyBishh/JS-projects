@@ -6,15 +6,18 @@ const initTask = (obj)=>{
 
     let taskdiv = document.createElement('div'); //.task
     taskdiv.classList.add("task");
-
+    
+    let contDiv = document.createElement('div'); //.contdiv
+    contDiv.classList.add("contdiv");
     let newTask = document.createElement('p'); //.taskcont
     newTask.classList.add("taskcont");
     newTask.textContent = cont;
-    let buttonDiv = document.createElement('div'); //.buttons
-    buttonDiv.classList.add("buttons");
     let check = document.createElement('input'); //.checkbox
     check.classList.add("checkbox");
     check.type = 'checkbox';
+
+    let buttonDiv = document.createElement('div'); //.buttons
+    buttonDiv.classList.add("buttons");
     let deleteButton = document.createElement('button'); //.delete
     deleteButton.classList.add("delete");
     deleteButton.textContent = "delete";
@@ -41,14 +44,16 @@ const initTask = (obj)=>{
         depriorButton.classList.toggle('hidebutton');
     }
 
+    contDiv.appendChild(check);
+    contDiv.appendChild(newTask);
+
     
-    buttonDiv.appendChild(check);
     buttonDiv.appendChild(deleteButton);
     buttonDiv.appendChild(priorButton);
     buttonDiv.appendChild(depriorButton);
 
     
-    taskdiv.appendChild(newTask);
+    taskdiv.appendChild(contDiv);
     taskdiv.appendChild(buttonDiv);
 
     if (obj.value){
@@ -157,14 +162,19 @@ const addTask = ()=>{
     let taskdiv = document.createElement('div'); //.task
     taskdiv.classList.add("task");
     taskdiv.classList.add("midprior");
+
+    
+    let contDiv = document.createElement('div'); //.contdiv
+    contDiv.classList.add("contdiv");
     let newTask = document.createElement('p'); //.taskcont
     newTask.classList.add("taskcont");
     newTask.textContent = inputTask;
-    let buttonDiv = document.createElement('div'); //.buttons
-    buttonDiv.classList.add("buttons");
     let check = document.createElement('input'); //.checkbox
     check.classList.add("checkbox");
     check.type = 'checkbox';
+
+    let buttonDiv = document.createElement('div'); //.buttons
+    buttonDiv.classList.add("buttons");
     let deleteButton = document.createElement('button'); //.delete
     deleteButton.classList.add("delete");
     deleteButton.textContent = "delete";
@@ -176,12 +186,16 @@ const addTask = ()=>{
     depriorButton.textContent = "deprioritize";
 
     
-    buttonDiv.appendChild(check);
+    contDiv.appendChild(check);
+    contDiv.appendChild(newTask);
+
+    
     buttonDiv.appendChild(deleteButton);
     buttonDiv.appendChild(priorButton);
     buttonDiv.appendChild(depriorButton);
+
     
-    taskdiv.appendChild(newTask);
+    taskdiv.appendChild(contDiv);
     taskdiv.appendChild(buttonDiv);
     
     let parent = document.querySelector('.viewboard');
