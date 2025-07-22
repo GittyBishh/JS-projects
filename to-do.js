@@ -1,7 +1,9 @@
 let data = JSON.parse(localStorage.getItem("user")) || [];
 
 
-const initTask = (cont)=>{
+const initTask = (obj)=>{
+    const cont = obj.task;//retrive text conetent
+
     let taskdiv = document.createElement('div'); //.task
     taskdiv.classList.add("task");
     let newTask = document.createElement('p'); //.taskcont
@@ -26,6 +28,12 @@ const initTask = (cont)=>{
     
     taskdiv.appendChild(newTask);
     taskdiv.appendChild(buttonDiv);
+
+    if (obj.value){
+        check.checked = true;
+        newTask.classList.toggle('done');
+
+    }
     
     let parent = document.querySelector('.viewboard');
     parent.appendChild(taskdiv);
@@ -36,7 +44,7 @@ const initTask = (cont)=>{
         let index = 0;
 
         for(let i = 0; i<data.length;i++){
-            if(data[i] == cont){
+            if(data[i].task == cont){
                 index = i;
                 break;
             }
@@ -49,6 +57,19 @@ const initTask = (cont)=>{
 
     check.addEventListener('click',()=>{
         newTask.classList.toggle('done');
+        let index = 0;
+
+        for(let i = 0; i<data.length;i++){
+            if(data[i].task == cont){
+                index = i;
+                break;
+            }
+        }
+
+        data[index].value = !data[index].value;
+
+        // data.splice(index,1);
+        localStorage.setItem("user", JSON.stringify(data));
     })
 }
 
@@ -94,12 +115,21 @@ const addTask = ()=>{
     let parent = document.querySelector('.viewboard');
     parent.appendChild(taskdiv);
 
+    data.push(
+        {
+            "task": inputTask,
+            "value": false,
+            "priority": 0
+        }
+    );
+    localStorage.setItem("user", JSON.stringify(data));
+
     deleteButton.addEventListener('click', ()=>{
         parent.removeChild(taskdiv);
         let index = 0;
 
         for(let i = 0; i<data.length;i++){
-            if(data[i] == inputTask){
+            if(data[i].task == inputTask){
                 index = i;
                 break;
             }
@@ -111,11 +141,23 @@ const addTask = ()=>{
 
     check.addEventListener('click',()=>{
         newTask.classList.toggle('done');
+
+        let index = 0;
+
+        for(let i = 0; i<data.length;i++){
+            if(data[i].task == inputTask){
+                index = i;
+                break;
+            }
+        }
+
+        data[index].value = !data[index].value;
+
+        // data.splice(index,1);
+        localStorage.setItem("user", JSON.stringify(data));
     })
     
-    data.push(inputTask);
-    localStorage.setItem("user", JSON.stringify(data));
-
+    
 
 }
 
